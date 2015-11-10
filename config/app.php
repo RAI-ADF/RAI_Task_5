@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -137,7 +137,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         'Illuminate\Html\HtmlServiceProvider',
-        Bestmomo\Scafold\ScafoldServiceProvider::class,
+        //Bestmomo\Scafold\ScafoldServiceProvider::class,
 
         /*
          * Application Service Providers...

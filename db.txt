@@ -1,0 +1,4 @@
+user
+group(fk:user as owner) 1 to many
+task(fk: user, group) 1 to many
+group-user(fk:group, user) many to many
