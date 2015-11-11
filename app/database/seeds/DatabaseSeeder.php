@@ -10,10 +10,7 @@ class DatabaseSeeder extends Seeder {
 	public function run()
 	{
 		Eloquent::unguard();
-
-		// $this->call('UserTableSeeder');
 		$this->call('SeederRelasi');
-		# Tampilkan informasi berikut bila Seeder telah dilakukan
 		$this->command->info('SeederRelasi berhasil.');
 	}
 
