@@ -14,6 +14,6 @@ class Address extends Model
     //function
     public function user()
     {
-    	return $this->hasOne('App\User');
+    	return $this->belongsTo('App\User');
     }
 }
