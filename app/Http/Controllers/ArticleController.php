@@ -18,9 +18,9 @@ class ArticleController extends Controller
    public function baca($id){
    		//return $id;
    	//echo 'malah ini yang dipakai';
-   		$article = Article::findorFail($id);
+   		$article = Article::firstOrFail($id);
    		dd($article->created_at->month);
-   		return view('article.baca',compact('article'));//->with('article',$article);
+   		return view('article.baca')->with('article',$article);
    }
    public function add(){
 		return view('article.add');

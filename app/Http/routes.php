@@ -60,4 +60,19 @@ get('blog/{slug}', 'BlogController@showPost');
 //FORM DAN VIEW
 Route::get('article/create','ArticleController@add');
 Route::get('article','ArticleController@index');
+//Route::get('article/{id}','ArticleController@baca');
 Route::post('article','ArticleController@simpan');
+
+//MIDDLEWARE
+Route::get('admin/profile', ['middleware' => 'auth', function () {
+    //
+}]);
+Route::get('/', ['middleware' => ['first', 'second'], function () {
+    //
+}]);
+Route::get('/', function () {
+    //
+})->middleware(['first', 'second']);
+Route::put('post/{id}', ['middleware' => 'role:editor', function ($id) {
+    //
+}]);
