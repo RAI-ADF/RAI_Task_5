@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY', 'SomeRandomString'),
+    'key' => env('APP_KEY', '27VnaEOwvf7ewkRTe5HuvgUwbqSjKu5F'),
 
     'cipher' => 'AES-256-CBC',
 
@@ -95,7 +95,7 @@ return [
     |
     */
 
-    'log' => 'single',
+    'log' => env('APP_LOG', 'single'),
 
     /*
     |--------------------------------------------------------------------------
@@ -136,8 +136,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        'Illuminate\Html\HtmlServiceProvider',
-        Bestmomo\Scafold\ScafoldServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -195,9 +193,6 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
-        'Form'      => 'Illuminate\Html\FormFacade',
-        'Html'      => 'Illuminate\Html\HtmlFacade',
-
 
     ],
 
