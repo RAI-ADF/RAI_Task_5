@@ -52,7 +52,7 @@ class User extends Model implements AuthenticatableContract,
         return $this->belongsToMany('App\User', 'follows', 'followee_id', 'follower_id');
     }
 
-    public function follower()
+    public function followee()
     {
         return $this->belongsToMany('App\User', 'follows', 'follower_id', 'followee_id');
     }
