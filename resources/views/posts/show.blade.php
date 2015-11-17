@@ -1,5 +1,5 @@
 @extends('layouts.master')
 
 @section('content')
-  <div class="title">{{$content}}</div>
+  <div class="title">{{$post->content}}</div>
 @endsection

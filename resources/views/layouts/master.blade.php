@@ -36,6 +36,11 @@
         </style>
     </head>
     <body>
+        <div style="position: fixed; top:0; right:0;">
+          <a href="/posts/create">
+            <img src="submit.png" width="75px"/>
+          </a>
+        </div>
         <div class="container">
             <div class="content">
                 @yield('content')

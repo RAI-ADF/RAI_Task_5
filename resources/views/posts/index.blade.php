@@ -2,6 +2,6 @@
 
 @section('content')
   @foreach ($posts as $post)
-    <div class="title">{{$post->content}}</div>
+    <div class="title">“{{$post->content}}” - {{$post->user->name}}</div>
   @endforeach
 @endsection

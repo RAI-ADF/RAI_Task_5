@@ -24,6 +24,7 @@ Route::get('/auth/logout', 'Auth\AuthController@getLogout');
 Route::get('/auth/register', 'Auth\AuthController@getRegister');
 Route::post('/auth/register', 'Auth\AuthController@postRegister');
 
+Route::get('/home', 'PostController@index');
 Route::get('/posts', 'PostController@index');
 Route::get('/posts/create', 'PostController@create');
 Route::get('/posts/{id}', 'PostController@show');

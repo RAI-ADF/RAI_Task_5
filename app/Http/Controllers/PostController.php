@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Auth;
+use View;
 
+use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -17,7 +19,7 @@ class PostController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +27,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        return 'hello world from controller : )';
+        $posts = Post::all();
+        return View::make('posts.index')
+            ->with('posts', $posts);
     }
 
     /**
@@ -60,10 +64,9 @@ class PostController extends Controller
             // store
             $post = new Post;
             $post->content = Input::get('content');
+            $post->user()->associate(Auth::user());
             $post->save();
 
-            // redirect
-            Session::flash('message', 'Successfully created a post!');
             return Redirect::to('posts');
         }
     }
@@ -76,7 +79,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return view('posts/show',array('content' => $id));
+        $post = Post::find($id);
+        return View::make('posts.show')
+            ->with('post', $post);
     }
 
     /**
