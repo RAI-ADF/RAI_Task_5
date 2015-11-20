@@ -12,5 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('test');
 });
+
+ //Route::get('tes','PagesController@home');
+// Route::get('array','PagesController@home2');
+  Route::get('page1','PagesController@home');
+  Route::get('page2','PagesController@home2');
+
+	Route::resource('students','studentsController@index');
+	Route::get('students/{id}','studentsController@show');
+	Route::get('input','studentsController@store');
+	
+

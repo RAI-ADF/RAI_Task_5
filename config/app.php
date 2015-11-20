@@ -121,7 +121,7 @@ return [
         Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
         Illuminate\Routing\ControllerServiceProvider::class,
         Illuminate\Cookie\CookieServiceProvider::class,
-        Illuminate\Database\DatabaseServiceProvider::class,
+		Illuminate\Database\DatabaseServiceProvider::class,
         Illuminate\Encryption\EncryptionServiceProvider::class,
         Illuminate\Filesystem\FilesystemServiceProvider::class,
         Illuminate\Foundation\Providers\FoundationServiceProvider::class,
@@ -136,8 +136,10 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        'Illuminate\Html\HtmlServiceProvider',
-        Bestmomo\Scafold\ScafoldServiceProvider::class,
+		Collective\Html\HtmlServiceProvider::class,
+		//Illuminate\Html\HtmlServiceProvider::class,
+		
+
 
         /*
          * Application Service Providers...
@@ -175,7 +177,7 @@ return [
         'Eloquent'  => Illuminate\Database\Eloquent\Model::class,
         'Event'     => Illuminate\Support\Facades\Event::class,
         'File'      => Illuminate\Support\Facades\File::class,
-        'Gate'      => Illuminate\Support\Facades\Gate::class,
+		'Gate'      => Illuminate\Support\Facades\Gate::class,
         'Hash'      => Illuminate\Support\Facades\Hash::class,
         'Input'     => Illuminate\Support\Facades\Input::class,
         'Inspiring' => Illuminate\Foundation\Inspiring::class,
@@ -195,8 +197,10 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
-        'Form'      => 'Illuminate\Html\FormFacade',
-        'Html'      => 'Illuminate\Html\HtmlFacade',
+		'Form'	 	=> Illuminate\Html\FormFacade::class,
+		'Html'	 	=> Illuminate\Html\HtmlFacade::class,
+		'Form' 		=> Collective\Html\FormFacade::class,
+		'Html' 		=> Collective\Html\HtmlFacade::class,
 
 
     ],
