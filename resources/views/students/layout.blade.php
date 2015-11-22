@@ -6,7 +6,6 @@
 		<link href="{{asset('css/bootstrap-theme.css')}}" rel="stylesheet" type="text/css">
 		<link href="{{asset('css/bootstrap-theme.min.css')}}" rel="stylesheet" type="text/css">
 
-	
 	</head>
 	<body>
 	

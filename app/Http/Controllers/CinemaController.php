@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 //use Illuminate\Http\Request;
+
 use Request;
+use App\cinema;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\student;
-use App\Http\Requests\StudentRequest;
 
-class studentsController extends Controller
+class CinemaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,11 +18,9 @@ class studentsController extends Controller
      */
     public function index()
     {
-		//return view('test');
-		$students = student::all();
-		return view('students.index', compact('students'));
-
-
+        //
+		$cinemas=cinema::all();
+		return view('movie.cinema',compact('cinemas'));
     }
 
     /**
@@ -41,16 +39,15 @@ class studentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StudentRequest $request)
+    public function store(Request $request)
     {
         //
-		// $student= new student;
-		// $student->name=Request::get('name');
-		// $student->major=Request::get('major');
-		// $student->save();
-		student::create($request ->all());
-		return redirect('students');
-		//return $student;
+		$cinema = new cinema;
+		$cinema->name=Request::get('name');
+		//$director=Request::all();
+		//return $director;
+		$cinema->save();
+		return redirect('cinema');
     }
 
     /**
@@ -62,12 +59,6 @@ class studentsController extends Controller
     public function show($id)
     {
         //
-		
-		$student = student::findOrFail($id);
-		//echo $student;
-		return view('students.show', compact('student'));
-
-
     }
 
     /**

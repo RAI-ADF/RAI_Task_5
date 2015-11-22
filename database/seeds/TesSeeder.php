@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-//use App\student;
+use App\student;
 class TesSeeder extends Seeder
 {
     /**
@@ -12,9 +12,9 @@ class TesSeeder extends Seeder
     public function run()
     {
         //
-		DB::table('students')->delete();
+		//DB::table('students')->delete();
 		$student1=student::create(['name'=>'aul','major'=>'IF']);
-		$student1=student::create(['name'=>'lala','major'=>'IF']);
+		$student2=student::create(['name'=>'lala','major'=>'IF']);
 
 		
     }

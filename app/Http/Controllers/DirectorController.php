@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+//use Illuminate\Http\Request;
+use Request;
+use App\director;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -17,6 +18,9 @@ class DirectorController extends Controller
     public function index()
     {
         //
+		$directors=director::all();
+		return view('movie.director',compact('directors'));
+		
     }
 
     /**
@@ -38,6 +42,12 @@ class DirectorController extends Controller
     public function store(Request $request)
     {
         //
+		$director = new director;
+		$director->name=Request::get('name');
+		//$director=Request::all();
+		//return $director;
+		$director->save();
+		return redirect('director');
     }
 
     /**

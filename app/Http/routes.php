@@ -20,8 +20,23 @@ Route::get('/', function () {
   Route::get('page1','PagesController@home');
   Route::get('page2','PagesController@home2');
 
-	Route::resource('students','studentsController@index');
-	Route::get('students/{id}','studentsController@show');
+	Route::get('students','studentsController@index');
+	Route::get('students/{id}','studentsController@show' );
 	Route::get('input','studentsController@store');
 	
+	//director
+	Route::get('director','DirectorController@index');
+	Route::post('director_input','DirectorController@store');
+	
+	//genre
+	Route::get('genre','GenreController@index');
+	Route::post('genre_input','GenreController@store');
+	
+	//cinema
+	Route::get('cinema','CinemaController@index');
+	Route::post('cinema_input','CinemaController@store');
+	
+	//movie
+	Route::get('movie','MovieController@index');
+	Route::post('movie_input','MovieController@store');
 

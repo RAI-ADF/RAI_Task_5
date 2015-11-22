@@ -13,7 +13,7 @@ class StudentRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,10 +23,10 @@ class StudentRequest extends Request
      */
     public function rules()
     {
-        // return [
+        return [
             
-			// 'name'=>'required|min:3',
-			// 'major'=>'required'
-        // ];
+			'name'=>'required|min:3',
+			'major'=>'required'
+        ];
     }
 }

@@ -20,7 +20,7 @@
   
 </form> 
 
-	<table class="table table-hover">
+<table class="table table-hover">
 	<th>ID</th>
 	<th>Nama</th>
 	@foreach ($students as $student)
@@ -29,6 +29,14 @@
 		<td>{{$student->name}}</td>
 		</tr>
 	@endforeach
-	</table>
+</table>
 
+@if($errors -> any())
+		<ul class="alert alert-danger">
+			@foreach($errors ->all()as $error)
+			<li>{{$error}}</li>
+			@endforeach
+		</ul>
+@endif
+	
 @stop

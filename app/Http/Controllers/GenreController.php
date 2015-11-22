@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-//use Illuminate\Http\Request;
-use Request;
+use Illuminate\Http\Request;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\student;
-use App\Http\Requests\StudentRequest;
 
-class studentsController extends Controller
+class GenreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,11 +16,8 @@ class studentsController extends Controller
      */
     public function index()
     {
-		//return view('test');
-		$students = student::all();
-		return view('students.index', compact('students'));
-
-
+        //
+		return view('movie.cinema');
     }
 
     /**
@@ -41,16 +36,9 @@ class studentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StudentRequest $request)
+    public function store(Request $request)
     {
         //
-		// $student= new student;
-		// $student->name=Request::get('name');
-		// $student->major=Request::get('major');
-		// $student->save();
-		student::create($request ->all());
-		return redirect('students');
-		//return $student;
     }
 
     /**
@@ -62,12 +50,6 @@ class studentsController extends Controller
     public function show($id)
     {
         //
-		
-		$student = student::findOrFail($id);
-		//echo $student;
-		return view('students.show', compact('student'));
-
-
     }
 
     /**

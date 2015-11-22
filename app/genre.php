@@ -8,4 +8,8 @@ class genre extends Model
 {
     //
 	protected $fillable=['name'];
+	
+	public function movie(){
+		return $this->belongsT('App\movie');
+	}
 }
