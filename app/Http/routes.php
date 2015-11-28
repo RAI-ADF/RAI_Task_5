@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('user', 'UserController');
+Route::resource('address', 'AddressController');
+Route::resource('group', 'GroupController');
+Route::resource('task', 'TaskController');
+
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
