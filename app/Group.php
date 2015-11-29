@@ -14,7 +14,7 @@ class Group extends Model
     //funnction
     public function owner()
     {
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo('App\User','user_id', 'id');
     }
 
     public function users()
@@ -25,6 +25,18 @@ class Group extends Model
     public function tasks()
     {
     	return $this->hasMany('App\Task');
+    }
+
+    public function isOwned($user)
+    {
+        if($user->id==$this->owner()->get()->first()->id)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }

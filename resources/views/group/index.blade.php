@@ -17,7 +17,9 @@
                 <tr>
                     <td>{{ $x }}</td>
                     <td><a href="{{ url('/group', $item->id) }}">{{ $item->name }}</a></td><td>{{ $item->description }}</td>
+                    @if($item->isowned(Auth::user()))
                     <td><a href="{{ url('/group/'.$item->id.'/edit') }}"><button type="submit" class="btn btn-primary btn-xs">Update</button></a> / {!! Form::open(['method'=>'delete','action'=>['GroupController@destroy',$item->id], 'style' => 'display:inline']) !!}<button type="submit" class="btn btn-danger btn-xs">Delete</button>{!! Form::close() !!}</td>
+                    @endif
                 </tr>
             @endforeach
             </tbody>

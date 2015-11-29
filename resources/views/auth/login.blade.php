@@ -2,26 +2,25 @@
 
 @section('content')
 
-    <h1>Create New Group</h1>
+	<h1>Sign In</h1>
     <hr/>
 
-    {!! Form::open(['url' => 'group', 'class' => 'form-horizontal']) !!}
+	{!! Form::open(['url' => 'auth/login', 'class' => 'form-horizontal']) !!}
     
-    <div class="form-group">
-                        {!! Form::label('name', 'Name: ', ['class' => 'col-sm-3 control-label']) !!}
+    				<div class="form-group">
+                        {!! Form::label('email', 'Email: ', ['class' => 'col-sm-3 control-label']) !!}
                         <div class="col-sm-6">
-                            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                            {!! Form::text('email', null, ['class' => 'form-control']) !!}
                         </div>
                     </div><div class="form-group">
-                        {!! Form::label('description', 'Description: ', ['class' => 'col-sm-3 control-label']) !!}
+                        {!! Form::label('password', 'Password: ', ['class' => 'col-sm-3 control-label']) !!}
                         <div class="col-sm-6">
-                            {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+                            {!! Form::password('password', ['class' => 'form-control']) !!}
                         </div>
                     </div>
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::hidden('user_id', Auth::user()->id) !!}
             {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
         </div>    
     </div>
@@ -34,5 +33,4 @@
             @endforeach
         </ul>
     @endif
-
 @endsection

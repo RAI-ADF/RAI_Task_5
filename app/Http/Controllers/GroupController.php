@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Auth;
 
 use App\Group;
 use Illuminate\Http\Request;
@@ -19,7 +20,11 @@ class GroupController extends Controller
 	 */
 	public function index()
 	{
-		$groups = Group::latest()->get();
+		//$groups = Group::latest()->get();
+		if(Auth::guest()){
+			return redirect('auth/login');
+		}
+		$groups = Auth::user()->groups()->get();
 		return view('group.index', compact('groups'));
 	}
 
@@ -28,6 +33,14 @@ class GroupController extends Controller
 	 *
 	 * @return Response
 	 */
+
+	public function addUser(Request $request)
+	{
+		$group = Group::findOrFail($request->group_id);
+		$group->users()->attach([$request->user_id]);
+		return redirect('/group/'.$request->group_id);
+	}
+
 	public function create()
 	{
 		return view('group.create');
@@ -40,8 +53,10 @@ class GroupController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		//$this->validate($request, ['name' => 'required']); // Uncomment and modify if you need to validate any input.
-		Group::create($request->all());
+		$this->validate($request, ['name' => 'required|min:4|unique:groups', 'description' => 'required']); // Uncomment and modify if you need to validate any input.
+
+		$group = Group::create($request->all());
+		$group->users()->sync([Auth::user()->id],true);
 		return redirect('group');
 	}
 
@@ -54,7 +69,8 @@ class GroupController extends Controller
 	public function show($id)
 	{
 		$group = Group::findOrFail($id);
-		return view('group.show', compact('group'));
+		$users = $group->users()->get();
+		return view('group.show', compact('group'), compact('users'));
 	}
 
 	/**

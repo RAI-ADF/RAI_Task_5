@@ -30,12 +30,13 @@
 			<div class="collapse navbar-collapse" id="navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
-						<li><a href="#">Group</a></li>
-						<li><a href="#">task</a></li>
+						
 						<li><a href="{{ url('/auth/login') }}">Login</a></li>
-						<li><a href="{{ url('/auth/register') }}">Register</a></li>
+						<li><a href="{{ url('/user/create') }}">Register</a></li>
 					@else
-						<li><a href="#">{{ Auth::user()->name }}</a></li>
+						<li><a href="{{ url('/user/'.Auth::user()->id) }}">{{ Auth::user()->name }}</a></li>
+						<li><a href="/">Group</a></li>
+						<li><a href="/task">task</a></li>
 						<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
 					@endif
 				</ul>
