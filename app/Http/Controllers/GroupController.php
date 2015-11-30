@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
 
+use App\Task;
 use App\Group;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -70,7 +71,9 @@ class GroupController extends Controller
 	{
 		$group = Group::findOrFail($id);
 		$users = $group->users()->get();
-		return view('group.show', compact('group'), compact('users'));
+		//$tasks = Task::latest()->get();
+		$tasks = $group->tasks()->get();
+		return view('group.show', compact('group'), compact('tasks'))->with(compact('users'));
 	}
 
 	/**

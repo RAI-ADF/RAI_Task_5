@@ -42,7 +42,7 @@ class TaskController extends Controller
 	{
 		//$this->validate($request, ['name' => 'required']); // Uncomment and modify if you need to validate any input.
 		Task::create($request->all());
-		return redirect('task');
+		return redirect('group/'.$request->group_id);
 	}
 
 	/**
