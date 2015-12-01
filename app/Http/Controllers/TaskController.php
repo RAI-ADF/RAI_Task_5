@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Auth;
 
 use App\Task;
 use Illuminate\Http\Request;
@@ -17,9 +18,15 @@ class TaskController extends Controller
 	 *
 	 * @return Response
 	 */
+	public function __construct()
+	{
+	    $this->middleware('auth');
+	}
+	
 	public function index()
 	{
-		$tasks = Task::latest()->get();
+		//$tasks = Task::latest()->get();
+		$tasks = Auth::user()->tasks()->get();
 		return view('task.index', compact('tasks'));
 	}
 
@@ -40,7 +47,10 @@ class TaskController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		//$this->validate($request, ['name' => 'required']); // Uncomment and modify if you need to validate any input.
+		$this->validate($request, ['name' => 'required|min:4:unique:tasks',
+			  					 	'starting_time' => 'required',
+			  					 	'finising_time' => 'required',
+			  					 	'user_id' => 'required']);
 		Task::create($request->all());
 		return redirect('group/'.$request->group_id);
 	}

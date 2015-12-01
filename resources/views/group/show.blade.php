@@ -47,7 +47,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>SL.</th><th>Name</th><th>Description</th><th>Starting Time</th><th>Actions</th>
+                    <th>SL.</th><th>Task Name</th><th>Description</th><th>Finishing Time</th><th>User name</th><th>Actions</th>
                 </tr>
             </thead>                
             <tbody>
@@ -56,13 +56,16 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $x }}</td>
-                    <td><a href="{{ url('/task', $item->id) }}">{{ $item->name }}</a></td><td>{{ $item->description }}</td><td>{{ $item->starting_time }}</td>
+                    <td><a href="{{ url('/task', $item->id) }}">{{ $item->name }}</a></td><td>{{ $item->description }}</td><td>{{ $item->finising_time }}</td><td>{{ $item->user()->get()->first()->name }}</td>
+                    @if(Auth::user()->id == $group->user_id)
                     <td><a href="{{ url('/task/'.$item->id.'/edit') }}"><button type="submit" class="btn btn-primary btn-xs">Update</button></a> / {!! Form::open(['method'=>'delete','action'=>['TaskController@destroy',$item->id], 'style' => 'display:inline']) !!}<button type="submit" class="btn btn-danger btn-xs">Delete</button>{!! Form::close() !!}</td>
+                    @endif
                 </tr>
             @endforeach
             </tbody>
         </table>
     </div>
+    @if(Auth::user()->id == $group->user_id)
     <h1>Add Member</h1>
     {!! Form::open(['url' => '/group/addUser', 'class' => 'form-horizontal']) !!}
     
@@ -127,6 +130,7 @@
                 <li>{{ $error }}</li>
             @endforeach
         </ul>
+    @endif
     @endif
 
 @endsection

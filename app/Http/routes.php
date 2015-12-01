@@ -22,7 +22,7 @@ Route::get('/','GroupController@index');
 Route::resource('user', 'UserController');
 Route::resource('address', 'AddressController');
 Route::resource('group', 'GroupController');
-Route::resource('task', 'TaskController');
+Route::resource('task', 'TaskController', ['except' => 'create']);
 
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
