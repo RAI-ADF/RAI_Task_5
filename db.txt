@@ -1,0 +1,8 @@
+user(fk: address) 1 to 1
+address(fk: user) 1 to 1	
+group(fk:user as owner) 1 to many
+	id
+	name
+	owner
+task(fk: user, group) 1 to many
+group-user(fk:group, user) many to many
