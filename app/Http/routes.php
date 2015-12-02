@@ -11,6 +11,29 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+Route::get('/','sampleController@home');
+Route::get('about','sampleController@about');
+Route::get('detail','sampleController@detail');
+
+
+Route::get('mahasiswa', 'MahasiswaController@home');
+
+Route::get('mahasiswa/login', 'MahasiswaController@login');
+Route::post('mahasiswa/login-check', 'MahasiswaController@loginCheck');
+
+Route::get('mahasiswa/form-create', 'MahasiswaController@formCreate');
+Route::post('mahasiswa/form-create-save', 'MahasiswaController@formCreateSave'); 
+
+Route::get('mahasiswa/view', 'MahasiswaController@viewAll');
+
+Route::get('mahasiswa/form-edit/{id}', 'MahasiswaController@formEdit');
+Route::post('mahasiswa/form-edit-update', 'MahasiswaController@formEditUpdate');
+
+Route::get('mahasiswa/form-delete/{id}', 'MahasiswaController@formDelete');
+
+
+
+Route::resource('mahasiswa', 'MahasiswaController');
+
