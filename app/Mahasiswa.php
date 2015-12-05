@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Mahasiswa extends Model
 {
     protected $table = 'mahasiswa';
@@ -12,6 +13,10 @@ class Mahasiswa extends Model
 
     public function wali(){
     	return $this->hasOne('App\Wali','id_mahasiswa');
+    }
+
+    public function user(){
+        return $this->hasOne('App\User','id');
     }
 
     public function dosen(){
