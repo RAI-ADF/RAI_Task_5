@@ -13,4 +13,8 @@
 
 Route::get('/', function () {
     return view('welcome');
+    //return 'text';
 });
+
+Route::get('/','BooksController@home');
+//Route::get('/','PagesController@contact');
