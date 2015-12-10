@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('home', 'WelcomeController@index');
+Route::get('/', 'WelcomeController@index');
+
+Route::get('viewdata', 'ViewDataController@viewdata');
+Route::get('managedata', 'ManageDataController@index');
+Route::get('inputdata', 'ManageDataController@inputdata');
+Route::get('input', array('uses'=>'ManageDataController@create'));
+
+/*Route::get('home', 'HomeController@index');
+Route::controllers([
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+]);*/
