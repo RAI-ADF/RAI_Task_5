@@ -12,5 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	$articles = Article::all();
+    return View::make('articles')->with('articles', $articles);
+});
+
+route::get('/profile/{username}',function($username){
+	$user = User::where('name' $username)->first0rFail();
+	
+	return View::make('profile')->with('user', $user);
+	
 });
