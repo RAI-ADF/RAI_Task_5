@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Session;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -61,5 +64,32 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function toHome(){
+        return redirect('home');
+    }
+
+    public function getLogin(){
+        return view('auth.login');
+    }
+
+    public function postLogin(Request $request){
+        $this->validate($request, [
+            'email' => 'required', 'password' => 'required',
+        ]);
+
+        $credentials = $this->getCredentials($request);
+
+        if (Auth::attempt($credentials, $request->has('remember'))) {
+            Session::flash('login_flash','Login berhasil');
+            return redirect()->intended();
+        }
+
+        return redirect($this->loginPath())
+            ->withInput($request->only('email'))
+            ->withErrors([
+                'email' => $this->getFailedLoginMessage(),
+            ]);
     }
 }
