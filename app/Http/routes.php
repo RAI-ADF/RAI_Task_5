@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('opalsky','OpalController');
+
+Route::get('opal',[
+		'middleware' => 'auth',
+		'uses' => 'OpalController@showOpal'
+	]);
