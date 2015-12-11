@@ -14,6 +14,8 @@ class CreatePicnicsTable extends Migration
     {
         Schema::create('picnics', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->integer('taste_level');
             $table->timestamps();
         });
     }

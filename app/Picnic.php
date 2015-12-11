@@ -11,5 +11,4 @@ class Picnic extends Model
     public function bears() {
         return $this->belongsToMany('Bear', 'bears_picnics', 'picnic_id', 'bear_id');
     }
-
 }
