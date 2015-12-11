@@ -10,7 +10,12 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/customers',function(){
+    $faker = Faker\Factory::create();
 
-Route::get('/', function () {
-    return view('welcome');
+    $limit = 10;
+
+    for ($i = 0; $i < $limit; $i++) {
+        $faker->name . ', Email Address: ' . $faker->unique()->email . ', Contact No' . $faker->phoneNumber . '<br>';
+    }
 });
